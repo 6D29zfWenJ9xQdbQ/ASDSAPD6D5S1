@@ -1,5 +1,6 @@
 const axios = require("axios");
 const config = require("./config");
+const http = require('http');
 
 async function getSimstatus() {
     return (await axios.get(`https://starblast.io/simstatus.json?cachebypass=${Math.random()}`)).data;
@@ -168,3 +169,11 @@ async function main() {
 }
 
 main().then();
+
+const port = process.env.PORT || 3000; // PORT ortam değişkeni kullanılır, yoksa 3000
+http.createServer((req, res) => {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Bot is running');
+}).listen(port, () => {
+    console.log(`HTTP server is running on port ${port}`);
+});
