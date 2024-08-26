@@ -5,6 +5,8 @@
     "axios": "^0.24.0"
   },
   "scripts": {
-    "start": "node main.js"
+    "start": "node index.js",
+    "build": "tsc",
+    "test": "mocha"
   }
 }
